@@ -1,8 +1,12 @@
 # Pizza Sales Analysis Report/Dasboard
 Page 1 "Home"
+
+
 ![2024-04-09](https://github.com/RafaellaGuti/Pizza-Sales-Analysis/assets/138822208/d669020c-650a-421f-9c29-fc902d4ffbc9)
 
 Page 1 "Best and Worst Sellers"
+
+
 ![2024-04-08 (1)](https://github.com/RafaellaGuti/Pizza-Sales-Analysis/assets/138822208/3a0d6a30-c9dc-4830-adf9-9d3818b3a19e)
 
 
