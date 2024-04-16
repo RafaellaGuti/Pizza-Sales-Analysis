@@ -33,13 +33,13 @@ Page 1 "Best and Worst Sellers"
 
 
 ### About the project
-This analysis is a Data Analysis Project involving transaction data occurring between 01/1/2010 and 12/12/2015 for a physical `Pizza store registered in the United States. The company mainly sells different flavors of Pizza, opening in a range of 11 hours a day, everyday.
+This analysis is a Data Analysis Project involving transaction data occurring between 01/1/2010 and 12/12/2015 for a physical Pizza store registered in the United States. The company mainly sells different flavors of Pizza, opening in a range of 11 hours a day, everyday. The dataset contain detailed information about pizza orders, including specifics about the pizza variants, quantities, pricing, dates, times, and categorization details.
 
 ### Objectives
 This analysis will determine the overall performance of sales of the products, grouped by category, number of orders, revenue, quantity, size, week, and hour of the day in order to identify patterns and insights that allow the analyst to pinpoint areas for improvement for later use by the company's management.
 
 ### Scope
-This project aims to provide an effective report and ETL process that builds tables related to the sales movements of the Pizza Store over the course of a year for subsequent utilization and analysis. report and table will allow the company to investigate and find relationships between sales volume, categories, quantity per order, and more. The goal is to identify patterns, obtain clear, up-to-date, and accessible information for subsequent decision-making.
+This project aims to provide an effective report and ETL process related to the sales movements of the Pizza Store over the course of a year for subsequent utilization and analysis. The report and table will allow the company to investigate and find relationships between sales volume, categories, quantity per order, and more. The goal is to identify patterns, obtain clear, up-to-date, and accessible information for subsequent decision-making.
 
 ### Project Steps
 
@@ -308,12 +308,13 @@ Recommendations for future improvements may include incorporating predictive ana
 ## ES - Analisis de Ventas de Ecommerce
   
 ### Sobre el proyecto
-
+Este análisis es un Proyecto de Análisis de Datos que involucra datos de transacciones ocurridas entre el 01/01/2010 y el 12/12/2015 para una tienda física de pizzas registrada en los Estados Unidos. La empresa vende principalmente diferentes sabores de pizza, abriendo en un rango de 11 horas al día, todos los días. El conjunto de datos contiene información detallada sobre pedidos de pizza, incluyendo especificaciones sobre las variantes de pizza, cantidades, precios, fechas, horas y detalles de categorización.
 
 ### Objetivos
-
+Este análisis determinará el rendimiento general de las ventas de los productos, agrupados por categoría, número de pedidos, ingresos, cantidad, tamaño, semana y hora del día con el fin de identificar patrones y conocimientos que permitan al analista señalar áreas de mejora para su posterior uso por parte de la dirección de la empresa.
 
 ### Alcance
+Este proyecto tiene como objetivo proporcionar un informe efectivo y un proceso de ETL relacionado con los movimientos de ventas de la Tienda de Pizzas durante el transcurso de un año para su posterior utilización y análisis. El informe y la tabla permitirán a la empresa investigar y encontrar relaciones entre el volumen de ventas, las categorías, la cantidad por pedido y más. El objetivo es identificar patrones, obtener información clara, actualizada y accesible para la toma de decisiones posterior.
 
 ### Pasos del Proyecto
 1. Obtener Data Set Online y descargarlo en maquina local.
@@ -340,7 +341,7 @@ Recommendations for future improvements may include incorporating predictive ana
 3. Crear Database en SQL Server e importar file
 4. Crear consultas para cada KPI y gráfico de visualización en SQL Server para posteriormente crear un reporte con el objetivo de realizar corroboraciones futuras.
 
-### Consultas para cada KPI:
+#### Consultas para cada KPI:
 
 a) Total revenue
 
@@ -551,10 +552,10 @@ Output:
 
 ![Bottom 5 Best Sellers by Total Orders](https://github.com/RafaellaGuti/Pizza-Sales-Analysis/assets/138822208/9e0ccb67-7037-4a21-b375-8ee61cc02227)
 
-6. Importar datos a Tableau Public.
-7. Procesamos los datos en Tableau Public 
-8. Creamos Reporte/Tablero 1 “Home”
-9. Creamos Reporte/Tablero 2 “Best and Worst Sellers”
+5. Importar datos a Tableau Public.
+6. Procesamos los datos en Tableau Public 
+7. Creamos Reporte/Tablero 1 “Home”
+8. Creamos Reporte/Tablero 2 “Best and Worst Sellers”
 
 
 ### Fuente de Datos
