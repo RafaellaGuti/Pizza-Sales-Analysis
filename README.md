@@ -66,10 +66,221 @@ Visualization Charts:
 
 3. Create Database in SQL Server and import file.
 4. Create queries for each KPI and visualization chart in SQL Server to subsequently create a report with the aim of conducting future checks.
-5. Import data into Tableau Public.
-6. Process the data in Tableau Public.
-7. Create Report/Dashboard 1 "Home".
-8. Create Report/Dashboard 2 "Best and Worst Sellers".
+
+   KPI's Queries:
+
+a) Total revenue
+
+SELECT SUM(total_price) AS Total_revenue
+FROM pizza_sales
+Output:
+ 
+![Total revenue](https://github.com/RafaellaGuti/Pizza-Sales-Analysis/assets/138822208/1fb9b829-da08-4293-95cc-486d2713a554)
+
+b) Average Order Value
+
+SELECT SUM(total_price)/COUNT(DISTINCT order_id) AS Average_order_value
+FROM pizza_sales
+Output:
+
+![SQL Avg Order Value](https://github.com/RafaellaGuti/Pizza-Sales-Analysis/assets/138822208/5aec33ca-b688-42dc-bccd-ab3a3eb2de26)
+
+c) Total Pizzas Sold
+	
+SELECT SUM(quantity) AS Total_Pizzas_Sold
+FROM pizza_sales
+Output:
+ 
+![Total Pizzas Sold](https://github.com/RafaellaGuti/Pizza-Sales-Analysis/assets/138822208/de1c421c-046b-4b40-869b-59e3753f9dc6)
+
+
+d) Total Orders
+
+SELECT COUNT(DISTINCT order_id) AS Total_orders
+FROM pizza_sales
+
+Output:
+
+![Total Orders](https://github.com/RafaellaGuti/Pizza-Sales-Analysis/assets/138822208/fdf01cee-aef3-4c93-bc70-bb12d133e9c9)
+
+
+e) Average Pizzas per Order
+
+SELECT SUM(quantity)/COUNT(DISTINCT order_id) AS Average_Pizzas_per_Order
+FROM pizza_sales
+
+Output:
+
+![Avg Pizzas per Order](https://github.com/RafaellaGuti/Pizza-Sales-Analysis/assets/138822208/bf4d7275-92f3-419c-8aa6-972ceea02494)
+
+
+f) Average Pizzas per Order 2 DECIMALS
+	
+SELECT CAST(CAST(SUM(quantity) AS DECIMAL (10,2)) / 
+CAST(COUNT(DISTINCT order_id) AS DECIMAL (10,2)) AS DECIMAL (10,2)) AS Average_Pizzas_per_Order
+FROM pizza_sales
+Output:
+
+![Avg pizzas per order 2 decimals](https://github.com/RafaellaGuti/Pizza-Sales-Analysis/assets/138822208/039ed1ba-1281-4c66-95bf-6e726acf2017)
+
+
+Chart Queries:
+
+a)	Hourly Trend for Total Pizzas Sold:
+
+SELECT DATEPART(HOUR, order_time) AS order_hour,
+      SUM(quantity) AS Total_pizzas_Sold
+FROM pizza_sales
+GROUP BY DATEPART(HOUR, order_time)
+ORDER BY DATEPART(HOUR, order_time)
+
+Output:
+ 
+![Hourly Trend for Total Pizzas Sold](https://github.com/RafaellaGuti/Pizza-Sales-Analysis/assets/138822208/18d58c64-95f7-441c-8fdf-dad9f19d3a59)
+
+
+b)	Weekly Trend for Total Orders:
+
+
+SELECT  DATEPART(ISO_WEEK, order_date) AS Week_number,
+		YEAR(order_date) AS Order_year,
+        COUNT(DISTINCT order_id) AS Total_orders
+FROM pizza_sales
+GROUP BY DATEPART(ISO_WEEK, order_date),
+		YEAR(order_date)  
+ORDER BY DATEPART(ISO_WEEK, order_date), 
+		YEAR(order_date)  
+
+Output:
+
+![ISO Weekly Trend for Total Orders](https://github.com/RafaellaGuti/Pizza-Sales-Analysis/assets/138822208/3057cfb5-4f66-4651-8306-978bd2ecdab8)
+![ISO Weekly Trend for Total Orders 2](https://github.com/RafaellaGuti/Pizza-Sales-Analysis/assets/138822208/74f26ead-82fc-43bf-8790-28ecc77b9695)
+
+
+
+c)	Percentage of Sales by Pizza Category:
+
+
+SELECT pizza_category,
+		SUM(total_price) AS Total_sales,
+		SUM(total_price) * 100 / (SELECT SUM(total_price) FROM pizza_sales) AS Percentage_of_sales
+FROM pizza_sales
+--WHERE MONTH(order_date) = 1 --January / APLICABLE A TODOS LOS QUERIES PARA FILTRAR POR MES/FECHA *TAMBIEN DEBE IR EN SUBQUERY*
+GROUP BY pizza_category
+
+
+Output:
+ 
+![Percentage of Sales by Pizza Category](https://github.com/RafaellaGuti/Pizza-Sales-Analysis/assets/138822208/d8dcf443-16a1-45c8-a889-8f2f6fe26c50)
+
+d)	Percentage of Sales by Pizza Size:
+
+
+SELECT pizza_size,
+		CAST(SUM(total_price) AS DECIMAL (10,2)) as Total_sales,
+		CAST(SUM(total_price) * 100 / (SELECT SUM(total_price) FROM pizza_sales) AS DECIMAL (10,2)) AS Percentage_of_sales 
+FROM pizza_sales
+--WHERE pizza_size = 'M' --January / APLICABLE A TODOS LOS QUERIES PARA FILTRAR POR MES/FECHA *TAMBIEN DEBE IR EN SUBQUERY*
+GROUP BY pizza_size
+ORDER BY pizza_size
+
+Output:
+
+ ![Percentage of Sales by Pizza Size](https://github.com/RafaellaGuti/Pizza-Sales-Analysis/assets/138822208/0b5474c1-a4f0-4919-b96d-a932fedac617)
+
+
+e)	Total Pizzas Sold by Pizza Category:
+
+
+SELECT pizza_category, SUM(quantity) AS Total_quantity
+FROM pizza_sales
+GROUP BY pizza_category
+ORDER BY pizza_category ASC
+
+Output:
+
+ ![Total Pizzas Sold by Pizza Category](https://github.com/RafaellaGuti/Pizza-Sales-Analysis/assets/138822208/c5b473a0-bc5f-4bcf-b463-d1ebff98b09b)
+
+
+f)	Top 5 Best Sellers by Revenue, Total Quantity and Total Orders
+
+By Revenue: 
+
+SELECT TOP 5 pizza_name, SUM(total_price) AS Total_revenue
+FROM pizza_sales
+GROUP BY pizza_name 
+ORDER BY Total_revenue DESC
+
+Output:
+
+![Top 5 Best Sellers by Revenue](https://github.com/RafaellaGuti/Pizza-Sales-Analysis/assets/138822208/8397ea2c-75d3-4c71-983e-9d1dacc439b9)
+
+
+By Quantity: 
+
+SELECT TOP 5 pizza_name, SUM(quantity) AS Total_quantity
+FROM pizza_sales
+GROUP BY pizza_name 
+ORDER BY Total_quantity DESC
+
+Output:
+ 
+![Top 5 Best Sellers by Total Quantity](https://github.com/RafaellaGuti/Pizza-Sales-Analysis/assets/138822208/51f3fd7b-8e0d-4582-be5a-df655ccd38ad)
+
+By Orders: 
+
+SELECT TOP 5 pizza_name, COUNT(distinct order_id) AS Total_orders
+FROM pizza_sales
+GROUP BY pizza_name 
+ORDER BY Total_orders DESC
+
+Output:
+ 
+![Top 5 Best Sellers by Total Orders](https://github.com/RafaellaGuti/Pizza-Sales-Analysis/assets/138822208/435dac65-3010-46de-82f4-bb196da5f0ef)
+
+
+
+g)	Bottom 5 Best Sellers by Revenue, Total Quantity and Total Orders
+
+
+By Revenue: 
+
+SELECT TOP 5 pizza_name, CAST(SUM(total_price) AS DECIMAL (10,2)) AS Total_revenue
+FROM pizza_sales
+GROUP BY pizza_name 
+ORDER BY Total_revenue ASC
+	
+Output:
+
+ ![Bottom 5 Best Sellers by Revenue](https://github.com/RafaellaGuti/Pizza-Sales-Analysis/assets/138822208/feb4a3e9-f291-4db2-8d15-902f453bc200)
+
+
+By Quantity:
+SELECT TOP 5 pizza_name, SUM(quantity) AS Total_quantity
+FROM pizza_sales
+GROUP BY pizza_name 
+ORDER BY Total_quantity ASC
+
+Output:
+ 
+![Bottom 5 Best Sellers by Total Quantity](https://github.com/RafaellaGuti/Pizza-Sales-Analysis/assets/138822208/d612b483-5e02-467d-9e73-b4e265a039c2)
+
+
+By Orders:
+
+
+SELECT TOP 5 pizza_name, COUNT(distinct order_id) AS Total_orders
+FROM pizza_sales
+GROUP BY pizza_name 
+ORDER BY Total_orders ASC
+
+Output:
+
+![Bottom 5 Best Sellers by Total Orders](https://github.com/RafaellaGuti/Pizza-Sales-Analysis/assets/138822208/9e0ccb67-7037-4a21-b375-8ee61cc02227)
+6. Import data into Tableau Public.
+7. Process the data in Tableau Public.
+8. Create Report/Dashboard 1 "Home".
+9. Create Report/Dashboard 2 "Best and Worst Sellers".
    
 
 
@@ -127,6 +338,7 @@ Gráficos de Visualización:
 
 3. Crear Database en SQL Server e importar file
 4. Crear consultas para cada KPI y gráfico de visualización en SQL Server para posteriormente crear un reporte con el objetivo de realizar corroboraciones futuras.
+
    Consultas para cada KPI:
 
 a) Total revenue
