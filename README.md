@@ -297,13 +297,38 @@ The dataset was downloaded to the local machine and subsequently uploaded to Goo
 - www.Flaticon.com
 
 ### Findings
+The hours with the highest peak of sales and orders are between 12 PM and 1 PM and in the afternoon between 4 PM and 7 PM.
+The week with the highest peak of sales is week number 2 with a total of 487 orders.
+The "Classic" category is the one that contributes the most to sales with almost 27% representation in total sales.
+The most sold Pizza size is "Large", with the least sold being "XX - Large".
+The "Classic" category is the one that contributes the most to the registered orders.
+The Pizza that generated the most revenue in the studied year was "The Thai Chicken Pizza", while "The Brie Carre Pizza" contributed the least to sales.
+The Pizza with the highest quantity sold in the studied year was "The Thai Chicken Pizza", while "The Brie Carre Pizza" contributed the least to quantities sold.
+The Pizza that contributes the most to orders in the studied year was "The Thai Chicken Pizza", while "The Brie Carre Pizza" contributed the least to orders.
 
 
 ### Conclusions, Limitations and Recommendations
 
-The data analysis project provides valuable insights into sales performance across different product categories.
-The interactive dashboard offers a user-friendly interface for exploring and interpreting data, facilitating informed decision-making.
-Recommendations for future improvements may include incorporating predictive analytics models to forecast sales trends and integrating additional data sources for comprehensive and deeper analysis regarding factors affecting the sales performance of each product in each category.
+Based on the findings obtained from the study of pizza store sales data, we can draw several important conclusions:
+
+The hours with the highest peak of sales coincide with lunchtime and the afternoon, suggesting that the store experiences high demand during these periods of the day.
+Week number 2 shows the highest peak of sales, which could be due to seasonal factors or specific promotions during that week.
+The "Classic" category is the most popular among customers, indicating a clear preference for more traditional pizza options.
+The most sold pizza size is "Large", which could indicate a widespread preference for larger portions.
+"The Thai Chicken Pizza" is the most successful in terms of revenue, quantity sold, and number of orders, suggesting that it is a very popular option among customers.
+It is important to consider some limitations of the study:
+
+The analyzed data comes from a specific time period and may not necessarily represent current or future sales trends.
+The analysis is based solely on internal data from the pizza store and does not take into account external factors such as competition, changes in the market, or specific events.
+The quality of the data may vary, and the accuracy of the findings may be subject to the integrity of the sales records.
+For future lines of research and project development, it is recommended to consider the following areas:
+
+Conduct a more detailed analysis of customer preferences and further segment the data to better understand purchasing patterns.
+Explore specific marketing strategies to promote less sold pizzas and maximize their sales potential.
+Implement real-time tracking systems to monitor sales and adjust business strategies as needed.
+Investigate the possibility of expanding the business into new markets or introducing new product lines based on the findings of the data analysis.
+This study provides valuable information that can help the company make informed decisions to improve its performance and meet the needs of its customers. However, it is important to continue researching and adapting as market conditions and consumer preferences evolve.
+
 
 ## ES - Analisis de Ventas de Ecommerce
   
@@ -570,5 +595,33 @@ The dataset was downloaded to the local machine and subsequently uploaded to Goo
 - www.Canva.com
 
 ### Descubrimientos
+- Las horas con mayor pico de ventas y pedidos son entre 12hs y 13hs y a la tarde entre 16hs y 19hs.
+- La semana con mayor pico de ventas es la semana número 2 con 487 ordenes en total.
+- La categoría “Classic” es la que contribuye al máximo de ventas con casi un 27% de representación en las ventas totales
+- El tamaño de Pizza más vendido es “Large”, siendo el menos vendido el “XX – Large”
+- La categoría “Classic” es la que contribuye al máximo de las ordenes registradas. 
+- La Pizza que genero más ingresos en el año estudiado fue “The Thai Chicken Pizza”. Siendo “The Brie Carre Pizza” la que contribuye al mínimo de ventas.
+- La Pizza con la mayor cantidad vendida en el año estudiado fue “The Thai Chicken Pizza”. Siendo “The Brie Carre Pizza” la que contribuye al mínimo de cantidades vendidas. 
+- La Pizza que contribuye al máximo de pedidos en el año estudiado fue “The Thai Chicken Pizza”. Siendo “The Brie Carre Pizza” la que contribuye al mínimo de pedidos.
 
 ### Conclusiones, Limitationes y Recommendationes
+
+Basándonos en los hallazgos obtenidos del estudio de los datos de ventas de la tienda de pizzas, podemos extraer varias conclusiones importantes:
+- Las horas con mayor pico de ventas coinciden con el almuerzo y la tarde, lo que sugiere que la tienda experimenta una alta demanda durante estos períodos del día.
+- La semana número 2 muestra el pico más alto de ventas, lo que podría deberse a factores estacionales o promociones específicas durante esa semana.
+- La categoría "Classic" es la más popular entre los clientes, lo que indica que hay una preferencia clara por las opciones de pizza más tradicionales.
+- El tamaño de pizza más vendido es "Large", lo que podría indicar una preferencia generalizada por porciones más grandes.
+- La pizza "The Thai Chicken Pizza" es la más exitosa en términos de ingresos, cantidad vendida y número de pedidos, lo que sugiere que es una opción muy popular entre los clientes.
+
+Es importante tener en cuenta algunas limitaciones del estudio:
+- Los datos analizados provienen de un período de tiempo específico y pueden no representar necesariamente las tendencias actuales o futuras de las ventas.
+- El análisis se basa únicamente en datos internos de la tienda de pizzas y no tiene en cuenta factores externos como la competencia, cambios en el mercado o eventos específicos.
+- La calidad de los datos puede variar y la precisión de los hallazgos puede estar sujeta a la integridad de los registros de ventas.
+
+Para futuras líneas de investigación y desarrollo del proyecto, se recomienda considerar las siguientes áreas:
+- Realizar un análisis más detallado de las preferencias de los clientes y segmentar aún más los datos para comprender mejor los patrones de compra.
+- Explorar estrategias de marketing específicas para promover las pizzas menos vendidas y maximizar su potencial de ventas.
+- Implementar sistemas de seguimiento en tiempo real para monitorear las ventas y ajustar estrategias comerciales según sea necesario.
+- Investigar la posibilidad de expandir el negocio a nuevos mercados o introducir nuevas líneas de productos basadas en los hallazgos del análisis de datos.
+
+Este estudio proporciona información valiosa que puede ayudar a la empresa a tomar decisiones informadas para mejorar su rendimiento y satisfacer las necesidades de sus clientes. Sin embargo, es importante continuar investigando y adaptándose a medida que evolucionan las condiciones del mercado y las preferencias de los consumidores.
