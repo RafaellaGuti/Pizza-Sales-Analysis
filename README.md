@@ -286,12 +286,13 @@ Output:
 
 
 ### Source of Data
-Source: https://www.kaggle.com/datasets/carrie1/ecommerce-data?resource=download
+Source: [https://www.kaggle.com/datasets/carrie1/ecommerce-data?resource=download](https://www.kaggle.com/datasets/nextmillionaire/pizza-sales-dataset)
 The dataset was downloaded to the local machine and subsequently uploaded to Google Drive under the name "data".
 
 ### Used tools, softwares and platforms
 - SQL Server
 - Tableau
+- Microsoft Word
 - www.Canva.com
 - www.Flaticon.com
 
@@ -557,9 +558,15 @@ Output:
 
 
 ### Fuente de Datos
-
+Source: [https://www.kaggle.com/datasets/carrie1/ecommerce-data?resource=download](https://www.kaggle.com/datasets/nextmillionaire/pizza-sales-dataset)
+The dataset was downloaded to the local machine and subsequently uploaded to Google Drive under the name "data".
    
 ### Herramientas, Softwares y Plataformas Utilizadas
+- SQL Server
+- Tableau
+- Microsoft Word
+- www.Flaticon.com
+- www.Canva.com
 
 ### Descubrimientos
 
