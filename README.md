@@ -46,7 +46,7 @@ This project aims to provide an effective report and ETL process that builds tab
 1. Obtain Data Set Online and download it to local machine.
 2. Set goals to detect KPIs and plan charts that meet the needs:
 
-KPIs:
+#### KPIs:
 
 - Total Revenue: The sum of the total price of all pizza orders.
 - Average Order Value: The average amount spent per order, calculated by dividing the total revenue by the total number of orders.
@@ -54,7 +54,7 @@ KPIs:
 - Total Orders: The total number of orders placed.
 - Average Pizzas Per Order: The average number of pizzas sold per order, calculated by dividing the total number of pizzas sold by the total number of orders.
 
-Visualization Charts:
+#### Visualization Charts:
 
 - Hourly Trend for Total Pizzas Sold: Create a stacked bar chart that displays the hourly trend of total orders over a specific time period. This chart will help us identify any patterns or fluctuations in order volumes on an hourly basis.
 - Weekly Trend for Total Orders: Create a line chart that illustrates the weekly trend of total orders throughout the year. This chart will allow us to identify peak weeks or periods of high order activity.
@@ -67,7 +67,7 @@ Visualization Charts:
 3. Create Database in SQL Server and import file.
 4. Create queries for each KPI and visualization chart in SQL Server to subsequently create a report with the aim of conducting future checks.
 
-   KPI's Queries:
+#### KPI's Queries:
 
 a) Total revenue
 
@@ -124,7 +124,7 @@ Output:
 ![Avg pizzas per order 2 decimals](https://github.com/RafaellaGuti/Pizza-Sales-Analysis/assets/138822208/039ed1ba-1281-4c66-95bf-6e726acf2017)
 
 
-Chart Queries:
+#### Chart Queries:
 
 a)	Hourly Trend for Total Pizzas Sold:
 
@@ -318,7 +318,7 @@ Recommendations for future improvements may include incorporating predictive ana
 1. Obtener Data Set Online y descargarlo en maquina local.
 2. Establecer objetivos para detectar KPI’s y planificar gráficos que cumplan con las necesidades:
 
-KPI’s:
+#### KPI’s:
 
 - Ingresos Totales: La suma del precio total de todos los pedidos de pizza.
 - Valor Promedio del Pedido: El monto promedio gastado por pedido, calculado dividiendo los ingresos totales por el número total de pedidos.
@@ -326,7 +326,7 @@ KPI’s:
 - Total de Pedidos: El número total de pedidos realizados.
 - Promedio de Pizzas por Pedido: El número promedio de pizzas vendidas por pedido, calculado dividiendo el total de pizzas vendidas por el número total de pedidos.
 
-Gráficos de Visualización:
+#### Gráficos de Visualización:
 
 - Tendencia Horaria para Total de Pizzas Vendidas: Crear un gráfico de barras apiladas que muestre la tendencia horaria de los pedidos totales durante un período de tiempo específico. Este gráfico nos ayudará a identificar cualquier patrón o fluctuación en los volúmenes de pedidos por hora.
 - Tendencia Semanal para Total de Pedidos: Crear un gráfico de líneas que ilustre la tendencia semanal de los pedidos totales a lo largo del año. Este gráfico nos permitirá identificar las semanas pico o los períodos de alta actividad de pedidos.
@@ -339,7 +339,7 @@ Gráficos de Visualización:
 3. Crear Database en SQL Server e importar file
 4. Crear consultas para cada KPI y gráfico de visualización en SQL Server para posteriormente crear un reporte con el objetivo de realizar corroboraciones futuras.
 
-   Consultas para cada KPI:
+### Consultas para cada KPI:
 
 a) Total revenue
 
@@ -396,7 +396,7 @@ Output:
 ![Avg pizzas per order 2 decimals](https://github.com/RafaellaGuti/Pizza-Sales-Analysis/assets/138822208/039ed1ba-1281-4c66-95bf-6e726acf2017)
 
 
-Consultas en SQL para Gráficos:
+#### Consultas en SQL para Gráficos:
 
 a)	Hourly Trend for Total Pizzas Sold:
 
