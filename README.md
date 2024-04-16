@@ -135,13 +135,15 @@ SELECT SUM(total_price) AS Total_revenue
 FROM pizza_sales
 Output:
  
+![Total revenue](https://github.com/RafaellaGuti/Pizza-Sales-Analysis/assets/138822208/1fb9b829-da08-4293-95cc-486d2713a554)
 
 b) Average Order Value
 
 SELECT SUM(total_price)/COUNT(DISTINCT order_id) AS Average_order_value
 FROM pizza_sales
 Output:
- 
+
+![SQL Avg Order Value](https://github.com/RafaellaGuti/Pizza-Sales-Analysis/assets/138822208/5aec33ca-b688-42dc-bccd-ab3a3eb2de26)
 
 c) Total Pizzas Sold
 	
@@ -149,6 +151,7 @@ SELECT SUM(quantity) AS Total_Pizzas_Sold
 FROM pizza_sales
 Output:
  
+![Total Pizzas Sold](https://github.com/RafaellaGuti/Pizza-Sales-Analysis/assets/138822208/de1c421c-046b-4b40-869b-59e3753f9dc6)
 
 
 d) Total Orders
@@ -157,7 +160,9 @@ SELECT COUNT(DISTINCT order_id) AS Total_orders
 FROM pizza_sales
 
 Output:
- 
+
+![Total Orders](https://github.com/RafaellaGuti/Pizza-Sales-Analysis/assets/138822208/fdf01cee-aef3-4c93-bc70-bb12d133e9c9)
+
 
 e) Average Pizzas per Order
 
@@ -165,7 +170,9 @@ SELECT SUM(quantity)/COUNT(DISTINCT order_id) AS Average_Pizzas_per_Order
 FROM pizza_sales
 
 Output:
- 
+
+![Avg Pizzas per Order](https://github.com/RafaellaGuti/Pizza-Sales-Analysis/assets/138822208/bf4d7275-92f3-419c-8aa6-972ceea02494)
+
 
 f) Average Pizzas per Order 2 DECIMALS
 	
@@ -173,7 +180,9 @@ SELECT CAST(CAST(SUM(quantity) AS DECIMAL (10,2)) /
 CAST(COUNT(DISTINCT order_id) AS DECIMAL (10,2)) AS DECIMAL (10,2)) AS Average_Pizzas_per_Order
 FROM pizza_sales
 Output:
- 
+
+![Avg pizzas per order 2 decimals](https://github.com/RafaellaGuti/Pizza-Sales-Analysis/assets/138822208/039ed1ba-1281-4c66-95bf-6e726acf2017)
+
 
 Consultas en SQL para Gráficos:
 
@@ -187,13 +196,7 @@ ORDER BY DATEPART(HOUR, order_time)
 
 Output:
  
-
-
-
-
-
-
-
+![Hourly Trend for Total Pizzas Sold](https://github.com/RafaellaGuti/Pizza-Sales-Analysis/assets/138822208/18d58c64-95f7-441c-8fdf-dad9f19d3a59)
 
 
 b)	Weekly Trend for Total Orders:
@@ -209,7 +212,9 @@ ORDER BY DATEPART(ISO_WEEK, order_date),
 		YEAR(order_date)  
 
 Output:
-  
+
+![ISO Weekly Trend for Total Orders](https://github.com/RafaellaGuti/Pizza-Sales-Analysis/assets/138822208/3057cfb5-4f66-4651-8306-978bd2ecdab8)
+![ISO Weekly Trend for Total Orders 2](https://github.com/RafaellaGuti/Pizza-Sales-Analysis/assets/138822208/74f26ead-82fc-43bf-8790-28ecc77b9695)
 
 
 
@@ -225,8 +230,8 @@ GROUP BY pizza_category
 
 
 Output:
-
  
+![Percentage of Sales by Pizza Category](https://github.com/RafaellaGuti/Pizza-Sales-Analysis/assets/138822208/d8dcf443-16a1-45c8-a889-8f2f6fe26c50)
 
 d)	Percentage of Sales by Pizza Size:
 
@@ -240,7 +245,9 @@ GROUP BY pizza_size
 ORDER BY pizza_size
 
 Output:
- 
+
+ ![Percentage of Sales by Pizza Size](https://github.com/RafaellaGuti/Pizza-Sales-Analysis/assets/138822208/0b5474c1-a4f0-4919-b96d-a932fedac617)
+
 
 e)	Total Pizzas Sold by Pizza Category:
 
@@ -251,7 +258,9 @@ GROUP BY pizza_category
 ORDER BY pizza_category ASC
 
 Output:
- 
+
+ ![Total Pizzas Sold by Pizza Category](https://github.com/RafaellaGuti/Pizza-Sales-Analysis/assets/138822208/c5b473a0-bc5f-4bcf-b463-d1ebff98b09b)
+
 
 f)	Top 5 Best Sellers by Revenue, Total Quantity and Total Orders
 
@@ -263,12 +272,8 @@ GROUP BY pizza_name
 ORDER BY Total_revenue DESC
 
 Output:
- 
 
-
-
-
-
+![Top 5 Best Sellers by Revenue](https://github.com/RafaellaGuti/Pizza-Sales-Analysis/assets/138822208/8397ea2c-75d3-4c71-983e-9d1dacc439b9)
 
 
 By Quantity: 
@@ -280,6 +285,7 @@ ORDER BY Total_quantity DESC
 
 Output:
  
+![Top 5 Best Sellers by Total Quantity](https://github.com/RafaellaGuti/Pizza-Sales-Analysis/assets/138822208/51f3fd7b-8e0d-4582-be5a-df655ccd38ad)
 
 By Orders: 
 
@@ -290,7 +296,7 @@ ORDER BY Total_orders DESC
 
 Output:
  
-
+![Top 5 Best Sellers by Total Orders](https://github.com/RafaellaGuti/Pizza-Sales-Analysis/assets/138822208/435dac65-3010-46de-82f4-bb196da5f0ef)
 
 
 
@@ -305,7 +311,9 @@ GROUP BY pizza_name
 ORDER BY Total_revenue ASC
 	
 Output:
- 
+
+ ![Bottom 5 Best Sellers by Revenue](https://github.com/RafaellaGuti/Pizza-Sales-Analysis/assets/138822208/feb4a3e9-f291-4db2-8d15-902f453bc200)
+
 
 By Quantity:
 SELECT TOP 5 pizza_name, SUM(quantity) AS Total_quantity
@@ -315,13 +323,7 @@ ORDER BY Total_quantity ASC
 
 Output:
  
-
-
-
-
-
-
-
+![Bottom 5 Best Sellers by Total Quantity](https://github.com/RafaellaGuti/Pizza-Sales-Analysis/assets/138822208/d612b483-5e02-467d-9e73-b4e265a039c2)
 
 
 By Orders:
@@ -333,7 +335,8 @@ GROUP BY pizza_name
 ORDER BY Total_orders ASC
 
 Output:
- 
+
+![Bottom 5 Best Sellers by Total Orders](https://github.com/RafaellaGuti/Pizza-Sales-Analysis/assets/138822208/9e0ccb67-7037-4a21-b375-8ee61cc02227)
 
 6. Importar datos a Tableau Public.
 7. Procesamos los datos en Tableau Public 
