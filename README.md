@@ -70,7 +70,6 @@ This project aims to provide an effective report and ETL process related to the 
 #### KPI's Queries:
 
 a) Total revenue
-
 SELECT SUM(total_price) AS Total_revenue
 FROM pizza_sales
 Output:
@@ -78,7 +77,6 @@ Output:
 ![Total revenue](https://github.com/RafaellaGuti/Pizza-Sales-Analysis/assets/138822208/1fb9b829-da08-4293-95cc-486d2713a554)
 
 b) Average Order Value
-
 SELECT SUM(total_price)/COUNT(DISTINCT order_id) AS Average_order_value
 FROM pizza_sales
 Output:
@@ -86,7 +84,6 @@ Output:
 ![SQL Avg Order Value](https://github.com/RafaellaGuti/Pizza-Sales-Analysis/assets/138822208/5aec33ca-b688-42dc-bccd-ab3a3eb2de26)
 
 c) Total Pizzas Sold
-	
 SELECT SUM(quantity) AS Total_Pizzas_Sold
 FROM pizza_sales
 Output:
@@ -95,27 +92,22 @@ Output:
 
 
 d) Total Orders
-
 SELECT COUNT(DISTINCT order_id) AS Total_orders
 FROM pizza_sales
-
 Output:
 
 ![Total Orders](https://github.com/RafaellaGuti/Pizza-Sales-Analysis/assets/138822208/fdf01cee-aef3-4c93-bc70-bb12d133e9c9)
 
 
 e) Average Pizzas per Order
-
 SELECT SUM(quantity)/COUNT(DISTINCT order_id) AS Average_Pizzas_per_Order
 FROM pizza_sales
-
 Output:
 
 ![Avg Pizzas per Order](https://github.com/RafaellaGuti/Pizza-Sales-Analysis/assets/138822208/bf4d7275-92f3-419c-8aa6-972ceea02494)
 
 
 f) Average Pizzas per Order 2 DECIMALS
-	
 SELECT CAST(CAST(SUM(quantity) AS DECIMAL (10,2)) / 
 CAST(COUNT(DISTINCT order_id) AS DECIMAL (10,2)) AS DECIMAL (10,2)) AS Average_Pizzas_per_Order
 FROM pizza_sales
@@ -126,22 +118,18 @@ Output:
 
 #### Chart Queries:
 
-a)	Hourly Trend for Total Pizzas Sold:
-
+a)Hourly Trend for Total Pizzas Sold:
 SELECT DATEPART(HOUR, order_time) AS order_hour,
       SUM(quantity) AS Total_pizzas_Sold
 FROM pizza_sales
 GROUP BY DATEPART(HOUR, order_time)
 ORDER BY DATEPART(HOUR, order_time)
-
 Output:
  
 ![Hourly Trend for Total Pizzas Sold](https://github.com/RafaellaGuti/Pizza-Sales-Analysis/assets/138822208/18d58c64-95f7-441c-8fdf-dad9f19d3a59)
 
 
-b)	Weekly Trend for Total Orders:
-
-
+b)Weekly Trend for Total Orders:
 SELECT  DATEPART(ISO_WEEK, order_date) AS Week_number,
 		YEAR(order_date) AS Order_year,
         COUNT(DISTINCT order_id) AS Total_orders
@@ -150,7 +138,6 @@ GROUP BY DATEPART(ISO_WEEK, order_date),
 		YEAR(order_date)  
 ORDER BY DATEPART(ISO_WEEK, order_date), 
 		YEAR(order_date)  
-
 Output:
 
 ![ISO Weekly Trend for Total Orders](https://github.com/RafaellaGuti/Pizza-Sales-Analysis/assets/138822208/3057cfb5-4f66-4651-8306-978bd2ecdab8)
@@ -158,24 +145,18 @@ Output:
 
 
 
-c)	Percentage of Sales by Pizza Category:
-
-
+c)Percentage of Sales by Pizza Category:
 SELECT pizza_category,
 		SUM(total_price) AS Total_sales,
 		SUM(total_price) * 100 / (SELECT SUM(total_price) FROM pizza_sales) AS Percentage_of_sales
 FROM pizza_sales
 --WHERE MONTH(order_date) = 1 --January / APLICABLE A TODOS LOS QUERIES PARA FILTRAR POR MES/FECHA *TAMBIEN DEBE IR EN SUBQUERY*
 GROUP BY pizza_category
-
-
 Output:
  
 ![Percentage of Sales by Pizza Category](https://github.com/RafaellaGuti/Pizza-Sales-Analysis/assets/138822208/d8dcf443-16a1-45c8-a889-8f2f6fe26c50)
 
-d)	Percentage of Sales by Pizza Size:
-
-
+d)Percentage of Sales by Pizza Size:
 SELECT pizza_size,
 		CAST(SUM(total_price) AS DECIMAL (10,2)) as Total_sales,
 		CAST(SUM(total_price) * 100 / (SELECT SUM(total_price) FROM pizza_sales) AS DECIMAL (10,2)) AS Percentage_of_sales 
@@ -183,73 +164,60 @@ FROM pizza_sales
 --WHERE pizza_size = 'M' --January / APLICABLE A TODOS LOS QUERIES PARA FILTRAR POR MES/FECHA *TAMBIEN DEBE IR EN SUBQUERY*
 GROUP BY pizza_size
 ORDER BY pizza_size
-
 Output:
 
  ![Percentage of Sales by Pizza Size](https://github.com/RafaellaGuti/Pizza-Sales-Analysis/assets/138822208/0b5474c1-a4f0-4919-b96d-a932fedac617)
 
 
-e)	Total Pizzas Sold by Pizza Category:
-
-
+e)Total Pizzas Sold by Pizza Category:
 SELECT pizza_category, SUM(quantity) AS Total_quantity
 FROM pizza_sales
 GROUP BY pizza_category
 ORDER BY pizza_category ASC
-
 Output:
 
  ![Total Pizzas Sold by Pizza Category](https://github.com/RafaellaGuti/Pizza-Sales-Analysis/assets/138822208/c5b473a0-bc5f-4bcf-b463-d1ebff98b09b)
 
 
-f)	Top 5 Best Sellers by Revenue, Total Quantity and Total Orders
+f)Top 5 Best Sellers by Revenue, Total Quantity and Total Orders
 
 By Revenue: 
-
 SELECT TOP 5 pizza_name, SUM(total_price) AS Total_revenue
 FROM pizza_sales
 GROUP BY pizza_name 
 ORDER BY Total_revenue DESC
-
 Output:
 
 ![Top 5 Best Sellers by Revenue](https://github.com/RafaellaGuti/Pizza-Sales-Analysis/assets/138822208/8397ea2c-75d3-4c71-983e-9d1dacc439b9)
 
 
 By Quantity: 
-
 SELECT TOP 5 pizza_name, SUM(quantity) AS Total_quantity
 FROM pizza_sales
 GROUP BY pizza_name 
 ORDER BY Total_quantity DESC
-
 Output:
  
 ![Top 5 Best Sellers by Total Quantity](https://github.com/RafaellaGuti/Pizza-Sales-Analysis/assets/138822208/51f3fd7b-8e0d-4582-be5a-df655ccd38ad)
 
 By Orders: 
-
 SELECT TOP 5 pizza_name, COUNT(distinct order_id) AS Total_orders
 FROM pizza_sales
 GROUP BY pizza_name 
 ORDER BY Total_orders DESC
-
 Output:
  
 ![Top 5 Best Sellers by Total Orders](https://github.com/RafaellaGuti/Pizza-Sales-Analysis/assets/138822208/435dac65-3010-46de-82f4-bb196da5f0ef)
 
 
 
-g)	Bottom 5 Best Sellers by Revenue, Total Quantity and Total Orders
-
+g)Bottom 5 Best Sellers by Revenue, Total Quantity and Total Orders
 
 By Revenue: 
-
 SELECT TOP 5 pizza_name, CAST(SUM(total_price) AS DECIMAL (10,2)) AS Total_revenue
 FROM pizza_sales
 GROUP BY pizza_name 
 ORDER BY Total_revenue ASC
-	
 Output:
 
  ![Bottom 5 Best Sellers by Revenue](https://github.com/RafaellaGuti/Pizza-Sales-Analysis/assets/138822208/feb4a3e9-f291-4db2-8d15-902f453bc200)
@@ -260,30 +228,26 @@ SELECT TOP 5 pizza_name, SUM(quantity) AS Total_quantity
 FROM pizza_sales
 GROUP BY pizza_name 
 ORDER BY Total_quantity ASC
-
 Output:
  
 ![Bottom 5 Best Sellers by Total Quantity](https://github.com/RafaellaGuti/Pizza-Sales-Analysis/assets/138822208/d612b483-5e02-467d-9e73-b4e265a039c2)
 
 
 By Orders:
-
-
 SELECT TOP 5 pizza_name, COUNT(distinct order_id) AS Total_orders
 FROM pizza_sales
 GROUP BY pizza_name 
 ORDER BY Total_orders ASC
-
 Output:
 
 ![Bottom 5 Best Sellers by Total Orders](https://github.com/RafaellaGuti/Pizza-Sales-Analysis/assets/138822208/9e0ccb67-7037-4a21-b375-8ee61cc02227)
+
+
 6. Import data into Tableau Public.
 7. Process the data in Tableau Public.
 8. Create Report/Dashboard 1 "Home".
 9. Create Report/Dashboard 2 "Best and Worst Sellers".
    
-
-
 
 ### Source of Data
 Source: [https://www.kaggle.com/datasets/carrie1/ecommerce-data?resource=download](https://www.kaggle.com/datasets/nextmillionaire/pizza-sales-dataset)
@@ -297,36 +261,37 @@ The dataset was downloaded to the local machine and subsequently uploaded to Goo
 - www.Flaticon.com
 
 ### Findings
-The hours with the highest peak of sales and orders are between 12 PM and 1 PM and in the afternoon between 4 PM and 7 PM.
-The week with the highest peak of sales is week number 2 with a total of 487 orders.
-The "Classic" category is the one that contributes the most to sales with almost 27% representation in total sales.
-The most sold Pizza size is "Large", with the least sold being "XX - Large".
-The "Classic" category is the one that contributes the most to the registered orders.
-The Pizza that generated the most revenue in the studied year was "The Thai Chicken Pizza", while "The Brie Carre Pizza" contributed the least to sales.
-The Pizza with the highest quantity sold in the studied year was "The Thai Chicken Pizza", while "The Brie Carre Pizza" contributed the least to quantities sold.
-The Pizza that contributes the most to orders in the studied year was "The Thai Chicken Pizza", while "The Brie Carre Pizza" contributed the least to orders.
+- The hours with the highest peak of sales and orders are between 12 PM and 1 PM and in the afternoon between 4 PM and 7 PM.
+- The week with the highest peak of sales is week number 2 with a total of 487 orders.
+- The "Classic" category is the one that contributes the most to sales with almost 27% representation in total sales.
+- The most sold Pizza size is "Large", with the least sold being "XX - Large".
+- The "Classic" category is the one that contributes the most to the registered orders.
+-The Pizza that generated the most revenue in the studied year was "The Thai Chicken Pizza", while "The Brie Carre Pizza" contributed the least to sales.
+- The Pizza with the highest quantity sold in the studied year was "The Thai Chicken Pizza", while "The Brie Carre Pizza" contributed the least to quantities sold.
+-The Pizza that contributes the most to orders in the studied year was "The Thai Chicken Pizza", while "The Brie Carre Pizza" contributed the least to orders.
 
 
 ### Conclusions, Limitations and Recommendations
 
 Based on the findings obtained from the study of pizza store sales data, we can draw several important conclusions:
 
-The hours with the highest peak of sales coincide with lunchtime and the afternoon, suggesting that the store experiences high demand during these periods of the day.
-Week number 2 shows the highest peak of sales, which could be due to seasonal factors or specific promotions during that week.
-The "Classic" category is the most popular among customers, indicating a clear preference for more traditional pizza options.
-The most sold pizza size is "Large", which could indicate a widespread preference for larger portions.
-"The Thai Chicken Pizza" is the most successful in terms of revenue, quantity sold, and number of orders, suggesting that it is a very popular option among customers.
+- The hours with the highest peak of sales coincide with lunchtime and the afternoon, suggesting that the store experiences high demand during these periods of the day.
+- Week number 2 shows the highest peak of sales, which could be due to seasonal factors or specific promotions during that week.
+- The "Classic" category is the most popular among customers, indicating a clear preference for more traditional pizza options.
+- The most sold pizza size is "Large", which could indicate a widespread preference for larger portions.
+- "The Thai Chicken Pizza" is the most successful in terms of revenue, quantity sold, and number of orders, suggesting that it is a very popular option among customers.
+
 It is important to consider some limitations of the study:
+- The analyzed data comes from a specific time period and may not necessarily represent current or future sales trends.
+- The analysis is based solely on internal data from the pizza store and does not take into account external factors such as competition, changes in the market, or specific events.
+- The quality of the data may vary, and the accuracy of the findings may be subject to the integrity of the sales records.
 
-The analyzed data comes from a specific time period and may not necessarily represent current or future sales trends.
-The analysis is based solely on internal data from the pizza store and does not take into account external factors such as competition, changes in the market, or specific events.
-The quality of the data may vary, and the accuracy of the findings may be subject to the integrity of the sales records.
 For future lines of research and project development, it is recommended to consider the following areas:
+- Conduct a more detailed analysis of customer preferences and further segment the data to better understand purchasing patterns.
+- Explore specific marketing strategies to promote less sold pizzas and maximize their sales potential.
+- Implement real-time tracking systems to monitor sales and adjust business strategies as needed.
+- Investigate the possibility of expanding the business into new markets or introducing new product lines based on the findings of the data analysis.
 
-Conduct a more detailed analysis of customer preferences and further segment the data to better understand purchasing patterns.
-Explore specific marketing strategies to promote less sold pizzas and maximize their sales potential.
-Implement real-time tracking systems to monitor sales and adjust business strategies as needed.
-Investigate the possibility of expanding the business into new markets or introducing new product lines based on the findings of the data analysis.
 This study provides valuable information that can help the company make informed decisions to improve its performance and meet the needs of its customers. However, it is important to continue researching and adapting as market conditions and consumer preferences evolve.
 
 
@@ -369,7 +334,6 @@ Este proyecto tiene como objetivo proporcionar un informe efectivo y un proceso 
 #### Consultas para cada KPI:
 
 a) Total revenue
-
 SELECT SUM(total_price) AS Total_revenue
 FROM pizza_sales
 Output:
@@ -377,7 +341,6 @@ Output:
 ![Total revenue](https://github.com/RafaellaGuti/Pizza-Sales-Analysis/assets/138822208/1fb9b829-da08-4293-95cc-486d2713a554)
 
 b) Average Order Value
-
 SELECT SUM(total_price)/COUNT(DISTINCT order_id) AS Average_order_value
 FROM pizza_sales
 Output:
@@ -385,7 +348,6 @@ Output:
 ![SQL Avg Order Value](https://github.com/RafaellaGuti/Pizza-Sales-Analysis/assets/138822208/5aec33ca-b688-42dc-bccd-ab3a3eb2de26)
 
 c) Total Pizzas Sold
-	
 SELECT SUM(quantity) AS Total_Pizzas_Sold
 FROM pizza_sales
 Output:
@@ -394,27 +356,22 @@ Output:
 
 
 d) Total Orders
-
 SELECT COUNT(DISTINCT order_id) AS Total_orders
 FROM pizza_sales
-
 Output:
 
 ![Total Orders](https://github.com/RafaellaGuti/Pizza-Sales-Analysis/assets/138822208/fdf01cee-aef3-4c93-bc70-bb12d133e9c9)
 
 
 e) Average Pizzas per Order
-
 SELECT SUM(quantity)/COUNT(DISTINCT order_id) AS Average_Pizzas_per_Order
 FROM pizza_sales
-
 Output:
 
 ![Avg Pizzas per Order](https://github.com/RafaellaGuti/Pizza-Sales-Analysis/assets/138822208/bf4d7275-92f3-419c-8aa6-972ceea02494)
 
 
 f) Average Pizzas per Order 2 DECIMALS
-	
 SELECT CAST(CAST(SUM(quantity) AS DECIMAL (10,2)) / 
 CAST(COUNT(DISTINCT order_id) AS DECIMAL (10,2)) AS DECIMAL (10,2)) AS Average_Pizzas_per_Order
 FROM pizza_sales
@@ -425,22 +382,18 @@ Output:
 
 #### Consultas en SQL para Gráficos:
 
-a)	Hourly Trend for Total Pizzas Sold:
-
+a)Hourly Trend for Total Pizzas Sold:
 SELECT DATEPART(HOUR, order_time) AS order_hour,
       SUM(quantity) AS Total_pizzas_Sold
 FROM pizza_sales
 GROUP BY DATEPART(HOUR, order_time)
 ORDER BY DATEPART(HOUR, order_time)
-
 Output:
  
 ![Hourly Trend for Total Pizzas Sold](https://github.com/RafaellaGuti/Pizza-Sales-Analysis/assets/138822208/18d58c64-95f7-441c-8fdf-dad9f19d3a59)
 
 
-b)	Weekly Trend for Total Orders:
-
-
+b)Weekly Trend for Total Orders:
 SELECT  DATEPART(ISO_WEEK, order_date) AS Week_number,
 		YEAR(order_date) AS Order_year,
         COUNT(DISTINCT order_id) AS Total_orders
@@ -449,7 +402,6 @@ GROUP BY DATEPART(ISO_WEEK, order_date),
 		YEAR(order_date)  
 ORDER BY DATEPART(ISO_WEEK, order_date), 
 		YEAR(order_date)  
-
 Output:
 
 ![ISO Weekly Trend for Total Orders](https://github.com/RafaellaGuti/Pizza-Sales-Analysis/assets/138822208/3057cfb5-4f66-4651-8306-978bd2ecdab8)
@@ -457,24 +409,18 @@ Output:
 
 
 
-c)	Percentage of Sales by Pizza Category:
-
-
+c)Percentage of Sales by Pizza Category:
 SELECT pizza_category,
 		SUM(total_price) AS Total_sales,
 		SUM(total_price) * 100 / (SELECT SUM(total_price) FROM pizza_sales) AS Percentage_of_sales
 FROM pizza_sales
 --WHERE MONTH(order_date) = 1 --January / APLICABLE A TODOS LOS QUERIES PARA FILTRAR POR MES/FECHA *TAMBIEN DEBE IR EN SUBQUERY*
 GROUP BY pizza_category
-
-
 Output:
  
 ![Percentage of Sales by Pizza Category](https://github.com/RafaellaGuti/Pizza-Sales-Analysis/assets/138822208/d8dcf443-16a1-45c8-a889-8f2f6fe26c50)
 
-d)	Percentage of Sales by Pizza Size:
-
-
+d)Percentage of Sales by Pizza Size:
 SELECT pizza_size,
 		CAST(SUM(total_price) AS DECIMAL (10,2)) as Total_sales,
 		CAST(SUM(total_price) * 100 / (SELECT SUM(total_price) FROM pizza_sales) AS DECIMAL (10,2)) AS Percentage_of_sales 
@@ -482,73 +428,61 @@ FROM pizza_sales
 --WHERE pizza_size = 'M' --January / APLICABLE A TODOS LOS QUERIES PARA FILTRAR POR MES/FECHA *TAMBIEN DEBE IR EN SUBQUERY*
 GROUP BY pizza_size
 ORDER BY pizza_size
-
 Output:
 
  ![Percentage of Sales by Pizza Size](https://github.com/RafaellaGuti/Pizza-Sales-Analysis/assets/138822208/0b5474c1-a4f0-4919-b96d-a932fedac617)
 
 
-e)	Total Pizzas Sold by Pizza Category:
-
-
+e)Total Pizzas Sold by Pizza Category:
 SELECT pizza_category, SUM(quantity) AS Total_quantity
 FROM pizza_sales
 GROUP BY pizza_category
 ORDER BY pizza_category ASC
-
 Output:
 
  ![Total Pizzas Sold by Pizza Category](https://github.com/RafaellaGuti/Pizza-Sales-Analysis/assets/138822208/c5b473a0-bc5f-4bcf-b463-d1ebff98b09b)
 
 
-f)	Top 5 Best Sellers by Revenue, Total Quantity and Total Orders
+f)Top 5 Best Sellers by Revenue, Total Quantity and Total Orders
 
 By Revenue: 
-
 SELECT TOP 5 pizza_name, SUM(total_price) AS Total_revenue
 FROM pizza_sales
 GROUP BY pizza_name 
 ORDER BY Total_revenue DESC
-
 Output:
 
 ![Top 5 Best Sellers by Revenue](https://github.com/RafaellaGuti/Pizza-Sales-Analysis/assets/138822208/8397ea2c-75d3-4c71-983e-9d1dacc439b9)
 
 
 By Quantity: 
-
 SELECT TOP 5 pizza_name, SUM(quantity) AS Total_quantity
 FROM pizza_sales
 GROUP BY pizza_name 
 ORDER BY Total_quantity DESC
-
 Output:
  
 ![Top 5 Best Sellers by Total Quantity](https://github.com/RafaellaGuti/Pizza-Sales-Analysis/assets/138822208/51f3fd7b-8e0d-4582-be5a-df655ccd38ad)
 
 By Orders: 
-
 SELECT TOP 5 pizza_name, COUNT(distinct order_id) AS Total_orders
 FROM pizza_sales
 GROUP BY pizza_name 
 ORDER BY Total_orders DESC
-
 Output:
  
 ![Top 5 Best Sellers by Total Orders](https://github.com/RafaellaGuti/Pizza-Sales-Analysis/assets/138822208/435dac65-3010-46de-82f4-bb196da5f0ef)
 
 
 
-g)	Bottom 5 Best Sellers by Revenue, Total Quantity and Total Orders
+g)Bottom 5 Best Sellers by Revenue, Total Quantity and Total Orders
 
 
 By Revenue: 
-
 SELECT TOP 5 pizza_name, CAST(SUM(total_price) AS DECIMAL (10,2)) AS Total_revenue
 FROM pizza_sales
 GROUP BY pizza_name 
 ORDER BY Total_revenue ASC
-	
 Output:
 
  ![Bottom 5 Best Sellers by Revenue](https://github.com/RafaellaGuti/Pizza-Sales-Analysis/assets/138822208/feb4a3e9-f291-4db2-8d15-902f453bc200)
@@ -559,23 +493,21 @@ SELECT TOP 5 pizza_name, SUM(quantity) AS Total_quantity
 FROM pizza_sales
 GROUP BY pizza_name 
 ORDER BY Total_quantity ASC
-
 Output:
  
 ![Bottom 5 Best Sellers by Total Quantity](https://github.com/RafaellaGuti/Pizza-Sales-Analysis/assets/138822208/d612b483-5e02-467d-9e73-b4e265a039c2)
 
 
 By Orders:
-
-
 SELECT TOP 5 pizza_name, COUNT(distinct order_id) AS Total_orders
 FROM pizza_sales
 GROUP BY pizza_name 
 ORDER BY Total_orders ASC
-
 Output:
 
 ![Bottom 5 Best Sellers by Total Orders](https://github.com/RafaellaGuti/Pizza-Sales-Analysis/assets/138822208/9e0ccb67-7037-4a21-b375-8ee61cc02227)
+
+
 
 5. Importar datos a Tableau Public.
 6. Procesamos los datos en Tableau Public 
